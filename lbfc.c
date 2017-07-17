@@ -36,14 +36,14 @@ const char error_cc_not_open[] = "failed to launch " COMPILER "\n";
 const char error_cc_failed[] = COMPILER " exited with code %d for %s\n";
 const char complete[] = "%s -> %s\n";
 
-const char templatestart[] = "#include <stdio.h>\n"
-                             "#include <termios.h>\n"
-                             "#include <unistd.h>\n"
-                             "#include <stdint.h>\n"
-                             "#include <string.h>\n"
-                             "#include <stdlib.h>\n"
+const char templatestart[] = "#include<stdio.h>\n"
+                             "#include<termios.h>\n"
+                             "#include<unistd.h>\n"
+                             "#include<stdint.h>\n"
+                             "#include<string.h>\n"
+                             "#include<stdlib.h>\n"
                              "#define b m[i]\n"
-                             "int main(int argc,char** argv)"
+                             "int main(int argc,char**argv)"
                              "{"
                              "struct termios o,n;"
                              "tcgetattr(STDIN_FILENO,&o);"
@@ -63,7 +63,7 @@ const char templateleft[] = "i--;";
 const char templateplus[] = "b++;";
 const char templateminus[] = "b--;";
 const char templatedot[] = "putchar(b);";
-const char templatecomma[] = "b = getchar();";
+const char templatecomma[] = "b=getchar();";
 const char templateopen[] = "while(b){";
 const char templateclose[] = "}";
 
