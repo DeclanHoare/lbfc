@@ -117,29 +117,32 @@ int main(int argc, char** argv)
 			DIE(error_out_of_memory, srcname);
 		memcpy(csrc, templatestart, sizeof(templatestart));
 		
+		size_t oldlen;
 		int c;
 		while ((c = fgetc(src)) != EOF)
 		{
-			size_t newlen;
-			const char* templatecmd = mapcmd(c, &newlen);
+			size_t tmplen;
+			const char* templatecmd = mapcmd(c, &tmplen);
 			if (templatecmd)
 			{
-				len += newlen;
+				oldlen = len;
+				len += tmplen;
 				csrc = realloc(csrc, len);
 				if (!csrc)
 					DIE(error_out_of_memory, srcname);
-				strcat(csrc, templatecmd);
+				memcpy(csrc + oldlen - 1, templatecmd, tmplen);
 			}
 		}
 		
 		fclose(src);
 		src = NULL;
 		
+		oldlen = len;
 		len += sizeof(templateend) - 1;
 		csrc = realloc(csrc, len);
 		if (!csrc)
 			DIE(error_out_of_memory, srcname);
-		strcat(csrc, templateend);
+		memcpy(csrc + oldlen - 1, templateend, sizeof(templateend));
 		
 		cc_command = malloc(sizeof(CMDSTART) + strlen(outname));
 		if (!cc_command)
