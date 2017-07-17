@@ -55,7 +55,7 @@ const char templatestart[] = "#include<stdio.h>\n"
                              "memset(m,0,UINT16_MAX);";
 
 const char templateend[] = "tcsetattr(STDIN_FILENO,TCSANOW,&o);"
-                           "return 0;"
+                           "return EXIT_SUCCESS;"
                            "}\n";
 
 const char templateright[] = "i++;";
