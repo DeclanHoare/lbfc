@@ -160,7 +160,7 @@ int main(int argc, char** argv)
 		int excode = WEXITSTATUS(pclose(cc));
 		cc = NULL;
 		if (excode != EXIT_SUCCESS)
-			DIE(error_cc_failed, excode, outname);
+			DIE(error_cc_failed, excode, srcname);
 		
 		fprintf(stderr, complete, srcname, outname);
 		free(srcname);
