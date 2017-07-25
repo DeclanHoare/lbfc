@@ -51,7 +51,7 @@ const char templatestart[] = "#include<stdio.h>\n"
                              "n.c_lflag&=~(ICANON|ECHO);"
                              "tcsetattr(STDIN_FILENO,TCSANOW,&n);"
                              "uint16_t i=0;"
-                             "char*m=malloc(65536);"
+                             "char m[65536];"
                              "memset(m,0,65536);";
 
 const char templateend[] = "tcsetattr(STDIN_FILENO,TCSANOW,&o);"
